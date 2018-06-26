@@ -12,6 +12,11 @@ def temp():
 
 schedule.every(10).seconds.do(temp)
 
-while True:
-    schedule.run_pending()
-    sleep(1)
+try:
+    while True:
+        schedule.run_pending()
+        sleep(1)
+except KeyboardInterrupt:
+    print("Cerrando el programa...")
+    schedule.cancel_job(temp)
+    f.close
